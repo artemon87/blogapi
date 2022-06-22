@@ -1,0 +1,96 @@
+/usr/local/opt/python@3.7/bin/python3 -m venv app_env
+  491  source app_env/bin/activate
+  492  pip3 install django~=3.1.0
+  493  django-admin startproject config
+  494  python manage.py startapp posts
+  501  source app_env/bin/activate
+  504  python manage.py migrate
+
+  507  python manage.py migrate
+  508  pip3 install django-cors-headers==3.4.0 #TODO install
+  509  pip3 install djangorestframework~=3.11.0 #TODO install
+  510  python manage.py makemigrations posts
+  511  python manage.py makemigrations posts
+  512  python manage.py createsuperuser
+  513  python manage.py runserver
+  514  python manage.py makemigrations posts
+  515  python manage.py migrate
+  516  python manage.py runserver
+  517  python manage.py migrate
+  518  python manage.py makemigrations posts
+  519  python manage.py migrate
+  520  python manage.py runserver
+  521  python manage.py migrate
+  522  pip3 install dj-rest-auth==1.1.0  #TODO install
+  523  python manage.py migrate
+  524  python manage.py runserver
+  525  pip3 install django-allauth~=0.42.0  #TODO install
+  526  python manage.py migrate
+  527  python manage.py runserver
+  528  python manage.py migrate
+  529  python manage.py runserver
+  530  pip3 install pyyaml==5.3.1 uritemplate==3.0.1  #TODO install
+  531  python manage.py generateschema > openapi-schema.yml
+  532  python manage.py runserver
+  533  pip3 install drf-yasg==1.17.1  #TODO install
+  534  python manage.py migrate
+  535  python manage.py migrate
+  536  python manage.py runserver
+  537  pip3 install django-debug-toolbar  #TODO install
+  538  python manage.py migrate
+  539  python manage.py migrate
+  540  python manage.py migrate
+  541  python manage.py migrate
+  542  python manage.py migrate
+  543  python manage.py migrate
+  544  python manage.py migrate
+  545  python manage.py migrate
+  546  python manage.py migrate
+  547  python manage.py makemigrations posts
+  548  python manage.py migrate
+  549  python manage.py migrate
+  550  python manage.py migrate
+  551  python manage.py migrate
+  552  pip3 install django-debug-toolbar
+  553  pip3 uninstall django-debug-toolbar
+  554  pip3 install django-debug-toolbar
+  555  python manage.py migrate
+  556  python manage.py migrate
+  557  python manage.py migrate
+  558  python manage.py migrate
+  559  python manage.py migrate
+  560  python manage.py makemigrations posts
+  561  python manage.py runserver
+  562  python manage.py migrate
+  563  python manage.py runserver
+  564  python manage.py migrate
+  565  python manage.py runserver
+  566  python manage.py migrate
+  567  python manage.py runserver
+  568  python manage.py migrate
+  569  python manage.py migrate
+  570  python manage.py runserver
+  571  python manage.py migrate
+  572  python manage.py migrate
+  573  python manage.py migrate
+  574  python manage.py runserver
+  575  python manage.py migrate
+  576  python manage.py runserver
+  577  python manage.py migrate
+  578  python manage.py runserver
+  579  python manage.py create_app blog  592  python manage.py runserver
+  593  python manage.py migrate
+  594  python manage.py runserver
+  595  python manage.py makemigrations blog
+  596  python manage.py migrate
+  597  python manage.py migrate
+  598  python manage.py runserver
+  599  python manage.py migrate
+  600  python manage.py runserver
+  601  python manage.py migrate
+  602  python manage.py runserver
+  603  python manage.py makemigrations blog
+  604  python manage.py migrate
+  605  python manage.py runserver
+  606  python manage.py migrate
+  607  python manage.py runserver

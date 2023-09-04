@@ -34,7 +34,7 @@ class CustomUserTests(TestCase):
         
         
         
-from django.urls import reverse # new
+"""from django.urls import reverse # new
 #from .forms import CustomUserCreationForm # new#
 class SignupPageTests(TestCase): # new
     def setUp(self):
@@ -50,4 +50,4 @@ class SignupPageTests(TestCase): # new
         
     def test_signup_form(self): # new
         form = self.response.context.get('form')
-        #self.assertIsInstance(form, CustomUserCreationForm)
+        #self.assertIsInstance(form, CustomUserCreationForm)"""

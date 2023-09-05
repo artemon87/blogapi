@@ -1,0 +1,33 @@
+version: 2.1
+
+jobs:
+  test-app:
+    docker:
+      - image: cimg/python:3.8-node
+    steps:
+      - checkout
+      - run:
+          name: install dependencies
+          command: pip install -r config/requirements.txt
+      - run:
+          name: run tests
+          command: python config/manage.py test
+      - run:
+          name: run docker.dev test
+          command: docker build - config/Dockerfile.dev .
+
+buil-and-test-app:
+    jobs:
+      - test-app
+
+
+build-and-push-to-dockerhub:
+    steps:
+      - checkout
+      - setup_remote_docker:
+          version: 19.03.13
+          docker_layer_caching: true
+      - run: |
+          echo "$DOCKERHUB_PASSWORD" | docker login --username $DOCKERHUB_USERNAME --password-stdin
+      - run: docker build -t artemon87/django-blog-demo:$CIRCLE_BRANCH .
+      - run: docker push artemon87/django-blog-demo:$CIRCLE_BRANCH

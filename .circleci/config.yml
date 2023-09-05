@@ -11,6 +11,7 @@ jobs:
           docker_layer_caching: true
      # - run: |
           #echo "$DOCKERHUB_PASSWORD" | docker login --username $DOCKERHUB_USERNAME --password-stdin
+      - run: docker login -u $DOCKERHUB_USERNAME -p $DOCKERHUB_PASSWORD
       - run: docker build -t artemon87/django-blog-demo:circle_build config/.
       - run: docker push artemon87/django-blog-demo:circle_build
   test-app:

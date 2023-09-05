@@ -1,6 +1,18 @@
 version: 2.1
 
 jobs:
+  build-and-push-to-dockerhub:
+    docker:
+      - image: cimg/python:3.8-node
+    steps:
+      - checkout
+      - setup_remote_docker:
+          version: 19.03.13
+          docker_layer_caching: true
+      - run: |
+          echo "$DOCKERHUB_PASSWORD" | docker login --username $DOCKERHUB_USERNAME --password-stdin
+      - run: docker build -t artemon87/django-blog-demo:$CIRCLE_BRANCH config/.
+      - run: docker push artemon87/django-blog-demo:$CIRCLE_BRANCH
   test-app:
     docker:
       - image: cimg/python:3.8-node
@@ -15,19 +27,14 @@ jobs:
       - run:
           name: run docker.dev test
           command: docker build - config/Dockerfile.dev .
-
-buil-and-test-app:
+workflows:
+  build-and-test-workflow:
     jobs:
       - test-app
+      - build-and-push-to-dockerhub:
+          requires:
+            - test-app
 
 
-build-and-push-to-dockerhub:
-    steps:
-      - checkout
-      - setup_remote_docker:
-          version: 19.03.13
-          docker_layer_caching: true
-      - run: |
-          echo "$DOCKERHUB_PASSWORD" | docker login --username $DOCKERHUB_USERNAME --password-stdin
-      - run: docker build -t artemon87/django-blog-demo:$CIRCLE_BRANCH config/.
-      - run: docker push artemon87/django-blog-demo:$CIRCLE_BRANCH
+
+  

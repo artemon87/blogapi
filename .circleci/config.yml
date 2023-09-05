@@ -11,7 +11,7 @@ jobs:
           docker_layer_caching: true
       - run: |
           echo "$DOCKERHUB_PASSWORD" | docker login --username $DOCKERHUB_USERNAME --password-stdin
-      - run: docker build -t artemon87/django-blog-demo:$CIRCLE_BRANCH config/.
+      - run: docker build -t artemon87/django-blog-demo:$CIRCLE_BRANCH -f config/.
       - run: docker push artemon87/django-blog-demo:$CIRCLE_BRANCH
   test-app:
     docker:
@@ -26,7 +26,7 @@ jobs:
           command: python config/manage.py test
       - run:
           name: run docker.dev test
-          command: docker build - config/Dockerfile.dev .
+          command: docker build -f config/Dockerfile.dev .
 workflows:
   build-and-test-workflow:
     jobs:

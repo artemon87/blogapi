@@ -18,6 +18,9 @@ jobs:
       - image: cimg/python:3.8-node
     steps:
       - checkout
+      - setup_remote_docker:
+          version: 19.03.13
+          docker_layer_caching: true
       - run:
           name: install dependencies
           command: pip install -r config/requirements.txt

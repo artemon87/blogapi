@@ -29,5 +29,5 @@ build-and-push-to-dockerhub:
           docker_layer_caching: true
       - run: |
           echo "$DOCKERHUB_PASSWORD" | docker login --username $DOCKERHUB_USERNAME --password-stdin
-      - run: docker build -t artemon87/django-blog-demo:$CIRCLE_BRANCH .
+      - run: docker build -t artemon87/django-blog-demo:$CIRCLE_BRANCH config/.
       - run: docker push artemon87/django-blog-demo:$CIRCLE_BRANCH

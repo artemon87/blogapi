@@ -12,10 +12,16 @@ jobs:
       - run:
           name: run tests
           command: python manage.py test
+      - run:
+          name: run docker.dev test
+          command: docker build - Dockerfile.dev .
 
-build-and-push-to-dockerhub:
+buil-and-test-app:
     jobs:
       - test-app
+
+
+build-and-push-to-dockerhub:
     steps:
       - checkout
       - setup_remote_docker:

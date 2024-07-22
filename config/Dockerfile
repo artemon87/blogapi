@@ -3,7 +3,7 @@ FROM python:3.8-slim-buster
 WORKDIR /app/config/
 
 COPY requirements.txt requirements.txt
-WORKDIR /app/config/
+WORKDIR /app
 RUN pip install -r requirements.txt
 
 COPY . .
